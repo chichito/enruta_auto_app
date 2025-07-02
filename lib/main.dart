@@ -2,6 +2,7 @@ import 'package:enruta_auto_app/ui/core/navigation/app_navigator.dart';
 import 'package:enruta_auto_app/ui/core/themes/theme.dart';
 import 'package:enruta_auto_app/ui/home/cubit/hora_cubit.dart';
 import 'package:enruta_auto_app/ui/home/home_page.dart';
+import 'package:enruta_auto_app/ui/root/view/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.light,
-      home: HomePage(),
       routes: {
+        AppNavigator.main: (_) => RootPage(),
         AppNavigator.home: (_) =>
             BlocProvider(create: (context) => HoraCubit(), child: HomePage()),
       },
