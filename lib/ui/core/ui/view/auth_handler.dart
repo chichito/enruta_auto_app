@@ -1,6 +1,8 @@
 import 'package:enruta_auto_app/ui/core/navigation/app_navigator.dart';
+import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthHandler extends StatelessWidget {
   const AuthHandler({
@@ -14,12 +16,28 @@ class AuthHandler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
+    /*SchedulerBinding.instance.addPostFrameCallback((_) {
       navigatorKey.currentState?.pushNamedAndRemoveUntil(
         AppNavigator.home,
         (route) => false,
       );
     });
-    return child;
+    return child;*/
+    return BlocListener<DataStoreBloc, DataStoreState>(
+      listener: (context, state) {
+        if (state is AuthAuthenticated) {
+          navigatorKey.currentState?.pushNamedAndRemoveUntil(
+            AppNavigator.home,
+            (route) => false,
+          );
+        } else if (state is AuthUnauthenticated) {
+          navigatorKey.currentState?.pushNamedAndRemoveUntil(
+            AppNavigator.data,
+            (route) => false,
+          );
+        }
+      },
+      child: child,
+    );
   }
 }

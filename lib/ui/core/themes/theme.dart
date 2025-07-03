@@ -12,6 +12,7 @@ class AppTheme {
           fontWeight: FontWeight.normal,
           fontSize: 14,
         ),
+
         border: UnderlineInputBorder(
           borderSide: BorderSide(color: AppColors.lightGrey),
         ),

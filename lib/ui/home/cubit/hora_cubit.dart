@@ -8,13 +8,15 @@ part 'hora_state.dart';
 class HoraCubit extends Cubit<HoraState> {
   Timer? _timer;
   HoraCubit()
-    : super(HoraInitial(hora: DateFormat('HH:mm:ss').format(DateTime.now()))) {
+    : super(
+        HoraInitial(hora: DateFormat.yMd().add_jms().format(DateTime.now())),
+      ) {
     _iniciarTemporizador();
   }
 
   void _iniciarTemporizador() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      String hh = DateFormat('HH:mm:ss').format(DateTime.now());
+      String hh = DateFormat.yMd().add_jms().format(DateTime.now());
       emit(state.copyWith(hora: hh));
     });
   }
