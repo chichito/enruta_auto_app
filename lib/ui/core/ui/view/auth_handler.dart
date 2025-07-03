@@ -1,4 +1,6 @@
+import 'package:enruta_auto_app/ui/core/navigation/app_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class AuthHandler extends StatelessWidget {
   const AuthHandler({
@@ -12,6 +14,12 @@ class AuthHandler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        AppNavigator.home,
+        (route) => false,
+      );
+    });
+    return child;
   }
 }
