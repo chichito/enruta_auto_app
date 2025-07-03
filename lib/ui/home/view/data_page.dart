@@ -23,55 +23,69 @@ class _DataPageState extends State<DataPage> {
 
     return Scaffold(
       appBar: AppBar(title: Text('Ingreso Datos')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    Text(
-                      'Ingreso de IP y Puerto',
-                      style: textTheme.labelLarge?.copyWith(
-                        fontSize: 30,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 20,
-                        decorationColor: theme.colorScheme.primary.withOpacity(
-                          0.3,
-                        ),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Image.asset(
+              'assets/images/background.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          SafeArea(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Ingreso de IP y Puerto',
+                            style: textTheme.labelLarge?.copyWith(
+                              fontSize: 30,
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 20,
+                              decorationColor: theme.colorScheme.primary
+                                  .withOpacity(0.3),
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          TextFormField(
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              label: Text('Imgrese la Ip del Servidor'),
+                            ),
+                            onChanged: cubit.onIPChanged,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                          ),
+                          const SizedBox(height: 30),
+                          TextFormField(
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              label: Text('Imgrese la Puerto del Servidor'),
+                            ),
+                            onChanged: cubit.onPortChanged,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 30),
-                    TextFormField(
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        label: Text('Imgrese la Ip del Servidor'),
-                      ),
-                      onChanged: cubit.onIPChanged,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                    ),
-                    const SizedBox(height: 30),
-                    TextFormField(
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        label: Text('Imgrese la Puerto del Servidor'),
-                      ),
-                      onChanged: cubit.onPortChanged,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                    ),
-                  ],
-                ),
+                  ),
+                  HoraWidget(sizeFont: 20, 0),
+                ],
               ),
             ),
-            HoraWidget(sizeFont: 20, 0),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
