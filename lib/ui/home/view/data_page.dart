@@ -1,3 +1,4 @@
+import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:enruta_auto_app/ui/home/cubit/data_cubit.dart';
 import 'package:enruta_auto_app/ui/home/widgets/hora_widget.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +78,12 @@ class _DataPageState extends State<DataPage> {
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
           ).copyWith(bottom: 20 + keyboardHeight),
-          child: ElevatedButton(onPressed: () {}, child: Text('Guardar Datos')),
+          child: ElevatedButton(
+            onPressed: () {
+              context.read<DataStoreBloc>().add(GrabarIn(token: 'fer'));
+            },
+            child: Text('Guardar Datos'),
+          ),
         ),
       ),
     );

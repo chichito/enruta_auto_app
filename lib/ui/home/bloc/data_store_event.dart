@@ -4,10 +4,10 @@ abstract class DataStoreEvent {}
 
 class AppStarted extends DataStoreEvent {}
 
-class LoggedIn extends DataStoreEvent {
+class GrabarIn extends DataStoreEvent {
   final String token;
 
-  LoggedIn(this.token);
+  GrabarIn({required this.token});
 }
 
 class LoggedOut extends DataStoreEvent {}

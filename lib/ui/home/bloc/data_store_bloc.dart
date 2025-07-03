@@ -11,7 +11,7 @@ class DataStoreBloc extends Bloc<DataStoreEvent, DataStoreState> {
 
   DataStoreBloc() : super(AuthInitial()) {
     on<AppStarted>(_onAppStarted);
-    on<LoggedIn>(_onLoggedIn);
+    on<GrabarIn>(_onGrabarIn);
     on<LoggedOut>(_onLoggedOut);
   }
 
@@ -27,7 +27,7 @@ class DataStoreBloc extends Bloc<DataStoreEvent, DataStoreState> {
     }
   }
 
-  Future<void> _onLoggedIn(LoggedIn event, Emitter<DataStoreState> emit) async {
+  Future<void> _onGrabarIn(GrabarIn event, Emitter<DataStoreState> emit) async {
     await _storageService.saveToken(event.token);
     emit(AuthAuthenticated(event.token));
   }

@@ -1,3 +1,4 @@
+import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'data_state.dart';
@@ -24,7 +25,9 @@ class DataCubit extends Cubit<DataState> {
     }
 
     try {
-      // await _authRepository.signIn(state.email!, state.password!);
+      // llamasr a aun evento del block DataStorege evento GrabarIn pasar un parametro
+      //aqui quiero llamar
+
       emit(state.copyWith(status: Status.success));
     } catch (e) {
       emit(state.copyWith(error: e.toString(), status: Status.failure));
