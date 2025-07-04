@@ -12,31 +12,34 @@ class DataStoreBloc extends Bloc<DataStoreEvent, DataStoreState> {
   DataStoreBloc() : super(AuthInitial()) {
     on<AppStarted>(_onAppStarted);
     on<GrabarIn>(_onGrabarIn);
-    on<LoggedOut>(_onLoggedOut);
+    on<DeleteOut>(_onDeleteOut);
   }
 
   Future<void> _onAppStarted(
     AppStarted event,
     Emitter<DataStoreState> emit,
   ) async {
-    final token = await _storageService.getToken();
-    if (token != null) {
-      emit(AuthAuthenticated(token));
+    final valorIp = await _storageService.getToken('IP');
+    final valorPort = await _storageService.getToken('PORT');
+
+    if (valorIp != null) {
+      emit(AuthStatusValid(valorIp, valorPort!));
     } else {
-      emit(AuthUnauthenticated());
+      emit(AuthStatusInValid());
     }
   }
 
   Future<void> _onGrabarIn(GrabarIn event, Emitter<DataStoreState> emit) async {
-    await _storageService.saveToken(event.token);
-    emit(AuthAuthenticated(event.token));
+    await _storageService.saveToken('IP', event.valorip);
+    await _storageService.saveToken('PORT', event.valorport);
+    emit(AuthStatusValid(event.valorip, event.valorport));
   }
 
-  Future<void> _onLoggedOut(
-    LoggedOut event,
+  Future<void> _onDeleteOut(
+    DeleteOut event,
     Emitter<DataStoreState> emit,
   ) async {
-    await _storageService.deleteToken();
-    emit(AuthUnauthenticated());
+    await _storageService.deleteToken(event.clave);
+    emit(AuthStatusInValid());
   }
 }

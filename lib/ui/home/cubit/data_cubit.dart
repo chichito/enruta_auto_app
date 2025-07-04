@@ -1,4 +1,3 @@
-import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'data_state.dart';
@@ -12,25 +11,5 @@ class DataCubit extends Cubit<DataState> {
 
   void onPortChanged(String? sPort) {
     emit(state.copyWith(sPort: sPort));
-  }
-
-  Future<void> onGuardar() async {
-    if (state.sIp == null) {
-      emit(state.copyWith(error: 'Ip no puede ser en Blanco'));
-      return;
-    }
-    if (state.sPort == null) {
-      emit(state.copyWith(error: 'Puerto no puede ser en Blanco'));
-      return;
-    }
-
-    try {
-      // llamasr a aun evento del block DataStorege evento GrabarIn pasar un parametro
-      //aqui quiero llamar
-
-      emit(state.copyWith(status: Status.success));
-    } catch (e) {
-      emit(state.copyWith(error: e.toString(), status: Status.failure));
-    }
   }
 }

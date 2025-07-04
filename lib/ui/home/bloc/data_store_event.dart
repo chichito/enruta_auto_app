@@ -5,9 +5,14 @@ abstract class DataStoreEvent {}
 class AppStarted extends DataStoreEvent {}
 
 class GrabarIn extends DataStoreEvent {
-  final String token;
+  final String valorip;
+  final String valorport;
 
-  GrabarIn({required this.token});
+  GrabarIn({required this.valorip, required this.valorport});
 }
 
-class LoggedOut extends DataStoreEvent {}
+class DeleteOut extends DataStoreEvent {
+  final String clave;
+
+  DeleteOut({required this.clave});
+}

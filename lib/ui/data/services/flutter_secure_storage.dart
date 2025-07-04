@@ -8,18 +8,16 @@ class SecureStorageService {
 
   final _secureStorage = const FlutterSecureStorage();
 
-  static const _jwtKey = 'jwt';
-
-  Future<void> saveToken(String token) async {
-    await _secureStorage.write(key: _jwtKey, value: token);
+  Future<void> saveToken(String clave, String valor) async {
+    await _secureStorage.write(key: clave, value: valor);
   }
 
-  Future<String?> getToken() async {
-    return await _secureStorage.read(key: _jwtKey);
+  Future<String?> getToken(String clave) async {
+    return await _secureStorage.read(key: clave);
   }
 
-  Future<void> deleteToken() async {
-    await _secureStorage.delete(key: _jwtKey);
+  Future<void> deleteToken(String clave) async {
+    await _secureStorage.delete(key: clave);
   }
 
   Future<void> clearStorage() async {

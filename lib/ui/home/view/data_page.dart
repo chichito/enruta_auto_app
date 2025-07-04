@@ -59,7 +59,7 @@ class _DataPageState extends State<DataPage> {
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
-                              label: Text('Imgrese la Ip del Servidor'),
+                              label: Text('Ingrese la Ip del Servidor'),
                             ),
                             onChanged: cubit.onIPChanged,
                             autovalidateMode:
@@ -70,7 +70,7 @@ class _DataPageState extends State<DataPage> {
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
-                              label: Text('Imgrese la Puerto del Servidor'),
+                              label: Text('Ingrese la Puerto del Servidor'),
                             ),
                             onChanged: cubit.onPortChanged,
                             autovalidateMode:
@@ -94,7 +94,12 @@ class _DataPageState extends State<DataPage> {
           ).copyWith(bottom: 20 + keyboardHeight),
           child: ElevatedButton(
             onPressed: () {
-              context.read<DataStoreBloc>().add(GrabarIn(token: 'fer'));
+              context.read<DataStoreBloc>().add(
+                GrabarIn(
+                  valorip: cubit.state.sIp!,
+                  valorport: cubit.state.sPort!,
+                ),
+              );
             },
             child: Text('Guardar Datos'),
           ),

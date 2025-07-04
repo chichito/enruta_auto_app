@@ -1,13 +1,14 @@
 part of 'data_store_bloc.dart';
 
-abstract class DataStoreState {}
+class DataStoreState {}
 
 class AuthInitial extends DataStoreState {}
 
-class AuthAuthenticated extends DataStoreState {
-  final String token;
+class AuthStatusValid extends DataStoreState {
+  final String valorIp;
+  final String valorPort;
 
-  AuthAuthenticated(this.token);
+  AuthStatusValid(this.valorIp, this.valorPort);
 }
 
-class AuthUnauthenticated extends DataStoreState {}
+class AuthStatusInValid extends DataStoreState {}
