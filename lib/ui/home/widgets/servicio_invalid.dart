@@ -1,12 +1,16 @@
+import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-class NormalEstado extends StatelessWidget {
-  const NormalEstado({super.key});
+class ServicioInvalid extends StatelessWidget {
+  const ServicioInvalid({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final authState = context.read<DataStoreBloc>().state;
+    final isUrl = authState is AuthStatusValid ? authState.isUrl : null;
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -19,10 +23,10 @@ class NormalEstado extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
-                image: AssetImage("assets/images/degradadogris.jpg"),
+                image: AssetImage("assets/images/degradadorojoamarillo.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.8),
+                  Colors.white.withOpacity(0.5),
                   BlendMode.dstATop,
                 ),
               ),
@@ -42,7 +46,7 @@ class NormalEstado extends StatelessWidget {
                     topLeft: Radius.circular(40),
                     bottomLeft: Radius.circular(40),
                   ),
-                  color: Colors.green,
+                  color: Colors.yellow.shade600,
                   border: Border(
                     left: BorderSide(color: Colors.black, width: 10),
                     bottom: BorderSide(color: Colors.black, width: 10),
@@ -50,19 +54,28 @@ class NormalEstado extends StatelessWidget {
                 ),
                 //color: Colors.green,
                 child: Center(
-                  child: Text(
-                    "Se Encuentra En Estado Normal!!!",
+                  child: RichText(
                     textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 30,
-                      color: Colors.black,
-                      decoration: TextDecoration.combine([
-                        TextDecoration.underline,
-                        //TextDecoration.lineThrough,
-                      ]),
+                    text: TextSpan(
+                      text: "Se Encuentra Sin Servicio!!!",
+                      //textAlign: TextAlign.center,
+                      //overflow: TextOverflow.ellipsis,
+                      //maxLines: 5,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 30,
+                        color: Colors.black,
+                        decoration: TextDecoration.combine([
+                          TextDecoration.underline,
+                          //TextDecoration.lineThrough,
+                        ]),
+                      ),
+                      children: [
+                        TextSpan(
+                          text: '\n\n $isUrl',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -70,6 +83,7 @@ class NormalEstado extends StatelessWidget {
             ),
           ),
           Gap(30),
+          /*
           FilledButton.tonalIcon(
             icon: Icon(Icons.energy_savings_leaf_rounded),
             style: ButtonStyle(
@@ -91,9 +105,9 @@ class NormalEstado extends StatelessWidget {
               }),
             ),
             onPressed: () {},
-            label: Text("Proceder A Enrutarr"),
+            label: Text("Proceder A Normal"),
             // child: Text("Proceder A Enrutar"),
-          ),
+          ),*/
         ],
       ),
     );

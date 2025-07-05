@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class NormalEstado extends StatelessWidget {
-  const NormalEstado({super.key});
+class NormalEnrutado extends StatelessWidget {
+  const NormalEnrutado({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class NormalEstado extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               image: DecorationImage(
-                image: AssetImage("assets/images/degradadogris.jpg"),
+                image: AssetImage("assets/images/degradadorojo.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.8),
+                  Colors.white.withOpacity(0.5),
                   BlendMode.dstATop,
                 ),
               ),
@@ -42,7 +42,7 @@ class NormalEstado extends StatelessWidget {
                     topLeft: Radius.circular(40),
                     bottomLeft: Radius.circular(40),
                   ),
-                  color: Colors.green,
+                  color: Colors.redAccent,
                   border: Border(
                     left: BorderSide(color: Colors.black, width: 10),
                     bottom: BorderSide(color: Colors.black, width: 10),
@@ -51,7 +51,7 @@ class NormalEstado extends StatelessWidget {
                 //color: Colors.green,
                 child: Center(
                   child: Text(
-                    "Se Encuentra En Estado Normal!!!",
+                    "Se Encuentra En Enrutado!!!",
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -91,7 +91,7 @@ class NormalEstado extends StatelessWidget {
               }),
             ),
             onPressed: () {},
-            label: Text("Proceder A Enrutarr"),
+            label: Text("Proceder A Normal"),
             // child: Text("Proceder A Enrutar"),
           ),
         ],

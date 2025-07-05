@@ -1,8 +1,8 @@
+import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:enruta_auto_app/ui/home/cubit/data_cubit.dart';
-import 'package:enruta_auto_app/ui/home/widgets/hora_widget.dart';
+import 'package:enruta_auto_app/ui/home/widgets/comun/hora_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:string_validator/string_validator.dart';
 
 class DataPage extends StatefulWidget {
   const DataPage({super.key});
@@ -62,6 +62,7 @@ class _DataPageState extends State<DataPage> {
                               label: Text('Ingrese la Ip del Servidor'),
                             ),
                             onChanged: cubit.onIPChanged,
+                            validator: cubit.onValidateIP,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                           ),
@@ -73,6 +74,7 @@ class _DataPageState extends State<DataPage> {
                               label: Text('Ingrese la Puerto del Servidor'),
                             ),
                             onChanged: cubit.onPortChanged,
+                            validator: cubit.onValidatePort,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                           ),
@@ -94,16 +96,27 @@ class _DataPageState extends State<DataPage> {
           ).copyWith(bottom: 20 + keyboardHeight),
           child: ElevatedButton(
             onPressed: () {
-              /*
+              if (_formKey.currentState == null ||
+                  !_formKey.currentState!.validate()) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Completar no valida la Informacion'),
+                  ),
+                );
+                return;
+              }
+              _formKey.currentState?.save();
               context.read<DataStoreBloc>().add(
                 GrabarIn(
                   valorip: cubit.state.sIp!,
                   valorport: cubit.state.sPort!,
-                ),                
-              );*/
-              String userInput = cubit.state.sIp!;
-              bool isValid = userInput.isIP(); // false
-              print(isValid);
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Se Grabo Exitosamente los Valores'),
+                ),
+              );
             },
             child: Text('Guardar Datos'),
           ),

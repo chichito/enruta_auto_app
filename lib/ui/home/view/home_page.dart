@@ -1,6 +1,5 @@
-import 'package:enruta_auto_app/ui/home/widgets/hora_widget.dart';
-import 'package:enruta_auto_app/ui/home/widgets/info_status.dart';
-import 'package:enruta_auto_app/ui/home/widgets/normal_estado.dart';
+import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
+import 'package:enruta_auto_app/ui/home/widgets/servicio_invalid.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Gap(50),
-                    NormalEstado(),
+                    ServicioInvalid(),
 
                     //HoraWidget(sizeFont: 40, 0),
                   ],
