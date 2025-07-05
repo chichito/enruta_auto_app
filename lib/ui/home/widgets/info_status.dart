@@ -9,8 +9,7 @@ class InfoStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authState = context.read<DataStoreBloc>().state;
-    final sIp = authState is AuthStatusValid ? authState.valorIp : null;
-    final sPort = authState is AuthStatusValid ? authState.valorPort : null;
+    final isUrl = authState is AuthStatusValid ? authState.isUrl : null;
     return Align(
       alignment: Alignment.bottomCenter,
       child: SizedBox(
@@ -26,7 +25,7 @@ class InfoStatus extends StatelessWidget {
                 InfoItem(
                   iconPath: 'assets/icons/ip.png',
                   value: 'Direccion:',
-                  label: 'http;//${sIp.toString()}:${sPort.toString()}',
+                  label: isUrl.toString(),
                 ),
                 VerticalDivider(color: Colors.grey[300]),
                 HoraWidget(sizeFont: 14, 0),

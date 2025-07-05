@@ -1,8 +1,8 @@
-import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
 import 'package:enruta_auto_app/ui/home/cubit/data_cubit.dart';
 import 'package:enruta_auto_app/ui/home/widgets/hora_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:string_validator/string_validator.dart';
 
 class DataPage extends StatefulWidget {
   const DataPage({super.key});
@@ -94,12 +94,16 @@ class _DataPageState extends State<DataPage> {
           ).copyWith(bottom: 20 + keyboardHeight),
           child: ElevatedButton(
             onPressed: () {
+              /*
               context.read<DataStoreBloc>().add(
                 GrabarIn(
                   valorip: cubit.state.sIp!,
                   valorport: cubit.state.sPort!,
-                ),
-              );
+                ),                
+              );*/
+              String userInput = cubit.state.sIp!;
+              bool isValid = userInput.isIP(); // false
+              print(isValid);
             },
             child: Text('Guardar Datos'),
           ),

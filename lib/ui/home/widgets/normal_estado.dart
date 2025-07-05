@@ -12,14 +12,55 @@ class NormalEstado extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 300,
+            height: 400,
             // Width of the container
             width: double.infinity,
-            color: Colors.green,
+            //color: Colors.green,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              image: DecorationImage(
+                image: AssetImage("assets/images/degradadogris.jpg"),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.white.withOpacity(0.8),
+                  BlendMode.dstATop,
+                ),
+              ),
+            ),
             child: Center(
-              child: const Text(
-                "Hello! I am inside a container!",
-                style: TextStyle(fontSize: 20, color: Colors.white),
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: 100,
+                  bottom: 100,
+                  left: 30,
+                  right: 30,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.green,
+                  border: Border(
+                    left: BorderSide(color: Colors.black, width: 10),
+                    bottom: BorderSide(color: Colors.black, width: 10),
+                  ),
+                ),
+                //color: Colors.green,
+                child: Center(
+                  child: Text(
+                    "Se Encuentra En Estado Normal!!!",
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 30,
+                      color: Colors.black,
+                      decoration: TextDecoration.combine([
+                        TextDecoration.underline,
+                        //TextDecoration.lineThrough,
+                      ]),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -32,10 +73,8 @@ class NormalEstado extends StatelessWidget {
                 if (value.contains(WidgetState.pressed)) {
                   return TextStyle(
                     fontSize: 30,
-                    //backgroundColor: Colors.blue,
                     decorationColor: Colors.amber,
                     fontWeight: FontWeight.w900,
-                    //decoration: BoxDecoration(color: Colors.amber),
                   );
                 }
                 return TextStyle(
@@ -45,10 +84,6 @@ class NormalEstado extends StatelessWidget {
                   fontWeight: FontWeight.w900,
                 );
               }),
-              //foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-              //padding: MaterialStateProperty.all<EdgeInsets>(
-              //EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              //),
             ),
             onPressed: () {},
             label: Text("Proceder A Enrutarr"),
