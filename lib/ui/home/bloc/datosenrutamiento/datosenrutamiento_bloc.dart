@@ -9,12 +9,18 @@ part 'datosenrutamiento_state.dart';
 
 class DatosenrutamientoBloc
     extends Bloc<DatosenrutamientoEvent, DatosenrutamientoState> {
+  /*
   final PostRepository _repository;
 
   DatosenrutamientoBloc(this._repository) : super(DatosenrutamientoInitial()) {
     on<FetchPosts>(_onFetchPosts);
   }
+*/
+  final _repository = PostRepository();
 
+  DatosenrutamientoBloc() : super(DatosenrutamientoInitial()) {
+    on<FetchPosts>(_onFetchPosts);
+  }
   Future<void> _onFetchPosts(
     FetchPosts event,
     Emitter<DatosenrutamientoState> emit,
