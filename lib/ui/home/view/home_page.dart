@@ -1,7 +1,6 @@
 import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
 import 'package:enruta_auto_app/ui/home/widgets/pruebas.dart';
-import 'package:enruta_auto_app/ui/home/widgets/servicio_invalid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
