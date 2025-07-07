@@ -1,7 +1,43 @@
-import 'package:enruta_auto_app/ui/home/bloc/datos/bloc/datosenrutamiento_bloc.dart';
+import 'package:enruta_auto_app/ui/home/model/post.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+class Pruebas extends StatelessWidget {
+  const Pruebas({super.key, required this.post});
+
+  final List<Post> post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Container(
+            color: Colors.amber,
+            height: 300,
+            child: Container(
+              color: Colors.green,
+              height: 50,
+              child: ListView.builder(
+                itemCount: post.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(post[index].title),
+                      subtitle: Text(post[index].body),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/*
 class Pruebas extends StatelessWidget {
   const Pruebas({super.key});
 
@@ -61,3 +97,4 @@ class Pruebas extends StatelessWidget {
     );
   }
 }
+*/

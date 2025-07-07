@@ -2,7 +2,7 @@ import 'package:enruta_auto_app/ui/core/navigation/app_navigator.dart';
 import 'package:enruta_auto_app/ui/core/themes/theme.dart';
 import 'package:enruta_auto_app/ui/core/ui/view/auth_handler.dart';
 import 'package:enruta_auto_app/ui/data/repository/post_repository.dart';
-import 'package:enruta_auto_app/ui/home/bloc/datos/bloc/datosenrutamiento_bloc.dart';
+import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/bloc/storage/data_store_bloc.dart';
 import 'package:enruta_auto_app/ui/home/cubit/data/data_cubit.dart';
 import 'package:enruta_auto_app/ui/home/cubit/hora/hora_cubit.dart';
