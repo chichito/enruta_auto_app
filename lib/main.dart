@@ -1,9 +1,11 @@
 import 'package:enruta_auto_app/ui/core/navigation/app_navigator.dart';
 import 'package:enruta_auto_app/ui/core/themes/theme.dart';
 import 'package:enruta_auto_app/ui/core/ui/view/auth_handler.dart';
-import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
-import 'package:enruta_auto_app/ui/home/cubit/data_cubit.dart';
-import 'package:enruta_auto_app/ui/home/cubit/hora_cubit.dart';
+import 'package:enruta_auto_app/ui/data/repository/post_repository.dart';
+import 'package:enruta_auto_app/ui/home/bloc/datos/bloc/datosenrutamiento_bloc.dart';
+import 'package:enruta_auto_app/ui/home/bloc/storage/data_store_bloc.dart';
+import 'package:enruta_auto_app/ui/home/cubit/data/data_cubit.dart';
+import 'package:enruta_auto_app/ui/home/cubit/hora/hora_cubit.dart';
 import 'package:enruta_auto_app/ui/home/view/data_page.dart';
 import 'package:enruta_auto_app/ui/home/view/home_page.dart';
 import 'package:enruta_auto_app/ui/root/view/root_page.dart';
@@ -40,8 +42,15 @@ class MyApp extends StatelessWidget {
               ],
               child: DataPage(),
             ),
-            AppNavigator.home: (_) => BlocProvider(
-              create: (context) => HoraCubit(),
+            AppNavigator.home: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider<HoraCubit>(create: (context) => HoraCubit()),
+                BlocProvider<DatosenrutamientoBloc>(
+                  create: (context) =>
+                      DatosenrutamientoBloc(PostRepository())
+                        ..add(FetchPosts()),
+                ),
+              ],
               child: HomePage(),
             ),
           },

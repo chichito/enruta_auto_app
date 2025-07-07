@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class NormalEnrutado extends StatelessWidget {
-  const NormalEnrutado({super.key});
+class EnrutadoEstado extends StatelessWidget {
+  const EnrutadoEstado({super.key});
 
   @override
   Widget build(BuildContext context) {

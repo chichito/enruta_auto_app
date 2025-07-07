@@ -1,4 +1,4 @@
-import 'package:enruta_auto_app/ui/home/bloc/data_store_bloc.dart';
+import 'package:enruta_auto_app/ui/home/bloc/storage/data_store_bloc.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/hora_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
