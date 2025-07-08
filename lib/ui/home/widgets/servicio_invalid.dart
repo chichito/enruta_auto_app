@@ -8,7 +8,6 @@ class ServicioInvalid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final authState = context.read<DataStoreBloc>().state;
     final isUrl = authState is AuthStatusValid ? authState.isUrl : null;
     return Padding(
@@ -26,7 +25,7 @@ class ServicioInvalid extends StatelessWidget {
                 image: AssetImage("assets/images/degradadorojoamarillo.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.5),
+                  Colors.white.withValues(alpha: 0.5),
                   BlendMode.dstATop,
                 ),
               ),

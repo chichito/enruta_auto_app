@@ -51,7 +51,7 @@ class _DataPageState extends State<DataPage> {
                               decoration: TextDecoration.underline,
                               decorationThickness: 20,
                               decorationColor: theme.colorScheme.primary
-                                  .withOpacity(0.3),
+                                  .withValues(alpha: 0.3),
                             ),
                           ),
                           const SizedBox(height: 30),

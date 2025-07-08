@@ -21,6 +21,7 @@ class DatosenrutamientoBloc
   DatosenrutamientoBloc() : super(DatosenrutamientoInitial()) {
     on<FetchPosts>(_onFetchPosts);
   }
+
   Future<void> _onFetchPosts(
     FetchPosts event,
     Emitter<DatosenrutamientoState> emit,
@@ -29,9 +30,7 @@ class DatosenrutamientoBloc
       emit(DatosenrutamientoLoading());
       List<Post> data = await _repository.fetchPosts();
       emit(DatosenrutamientoLoaded(posts: data));
-      // emit(HomeScreenError(message: "Something Went Wrong..."));
     } catch (e) {
-      print(e);
       emit(DatosenrutamientoError(message: e.toString()));
     }
   }

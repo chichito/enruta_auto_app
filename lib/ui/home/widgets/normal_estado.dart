@@ -21,7 +21,7 @@ class NormalEstado extends StatelessWidget {
                 image: AssetImage("assets/images/degradadogris.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.8),
+                  Colors.white.withValues(alpha: 0.8),
                   BlendMode.dstATop,
                 ),
               ),

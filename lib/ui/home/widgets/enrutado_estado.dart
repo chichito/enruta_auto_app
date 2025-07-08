@@ -21,7 +21,7 @@ class EnrutadoEstado extends StatelessWidget {
                 image: AssetImage("assets/images/degradadorojo.jpg"),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.white.withOpacity(0.5),
+                  Colors.white.withValues(alpha: 0.5),
                   BlendMode.dstATop,
                 ),
               ),
