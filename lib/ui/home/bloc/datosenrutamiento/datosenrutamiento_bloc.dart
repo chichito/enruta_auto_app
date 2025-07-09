@@ -19,6 +19,11 @@ class DatosenrutamientoBloc
   final _repository = PostRepository();
 
   DatosenrutamientoBloc() : super(DatosenrutamientoInitial()) {
+    on<IniciarTemporizador>((event, emit) {
+      Timer.periodic(const Duration(seconds: 5), (timer) {
+        add(FetchPosts());
+      });
+    });
     on<FetchPosts>(_onFetchPosts);
   }
 

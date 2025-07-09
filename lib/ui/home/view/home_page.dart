@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
 import 'package:enruta_auto_app/ui/home/widgets/pruebas.dart';
@@ -18,10 +16,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 5), (timer) {
+    /* Timer.periodic(Duration(seconds: 5), (timer) {
       context.read<DatosenrutamientoBloc>().add(FetchPosts());
       //context.read<DatosenrutamientoBloc>().add(IniciarTemporizador());
-    });
+    });*/
   }
 
   @override

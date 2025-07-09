@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
                 */
                 BlocProvider<DatosenrutamientoBloc>(
                   create: (context) =>
-                      DatosenrutamientoBloc()..add(FetchPosts()),
+                      DatosenrutamientoBloc()..add(IniciarTemporizador()),
                 ),
               ],
               child: HomePage(),
