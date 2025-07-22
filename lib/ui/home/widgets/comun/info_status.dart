@@ -1,3 +1,4 @@
+import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/bloc/storage/data_store_bloc.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/hora_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,19 +18,27 @@ class InfoStatus extends StatelessWidget {
         height: 60,
         child: Padding(
           padding: EdgeInsetsGeometry.symmetric(horizontal: 8),
-          child: Card(
-            elevation: 4,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InfoItem(
-                  iconPath: 'assets/icons/ip.png',
-                  value: 'Direccion:',
-                  label: isUrl.toString(),
-                ),
-                VerticalDivider(color: Colors.grey[300]),
-                HoraWidget(sizeFont: 14, 0),
-              ],
+          child: GestureDetector(
+            onTap: () {
+              // Handle tap if needed
+              context.read<DataStoreBloc>().add(DeleteOut(clave: 'IP'));
+              context.read<DataStoreBloc>().add(DeleteOut(clave: 'PORT'));
+              context.read<DatosenrutamientoBloc>().close();
+            },
+            child: Card(
+              elevation: 4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InfoItem(
+                    iconPath: 'assets/icons/ip.png',
+                    value: 'Direccion:',
+                    label: isUrl.toString(),
+                  ),
+                  VerticalDivider(color: Colors.grey[300]),
+                  HoraWidget(sizeFont: 14, 0),
+                ],
+              ),
             ),
           ),
         ),

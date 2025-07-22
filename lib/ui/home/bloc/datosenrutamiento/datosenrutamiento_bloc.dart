@@ -16,11 +16,17 @@ class DatosenrutamientoBloc
     on<FetchPosts>(_onFetchPosts);
   }
 */
-  final _repository = PostRepository();
+  //final _repository = PostRepository(apiUrl: "https://dummyjson.com/posts");
+  var _repository = PostRepository(apiUrl: '');
+  Timer? timer;
+  final String sUrl;
+  DatosenrutamientoBloc(this.sUrl) : super(DatosenrutamientoInitial()) {
+    // Initialize the repository with the global API URL
 
-  DatosenrutamientoBloc() : super(DatosenrutamientoInitial()) {
+    _repository = PostRepository(apiUrl: sUrl);
+
     on<IniciarTemporizador>((event, emit) {
-      Timer.periodic(const Duration(seconds: 5), (timer) {
+      timer = Timer.periodic(const Duration(seconds: 5), (timer) {
         add(FetchPosts());
       });
     });
@@ -38,5 +44,12 @@ class DatosenrutamientoBloc
     } catch (e) {
       emit(DatosenrutamientoError(message: e.toString()));
     }
+  }
+
+  @override
+  Future<void> close() {
+    // Cancel any ongoing timers or streams if necessary
+    timer?.cancel();
+    return super.close();
   }
 }

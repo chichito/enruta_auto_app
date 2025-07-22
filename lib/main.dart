@@ -52,9 +52,18 @@ class MyApp extends StatelessWidget {
                 ),
                 */
                 BlocProvider<DatosenrutamientoBloc>(
-                  create: (context) => DatosenrutamientoBloc()
-                    ..add(IniciarTemporizador())
-                    ..add(FetchPosts()),
+                  create: (context) =>
+                      DatosenrutamientoBloc(
+                          /*context.read<DataStoreBloc>().state is AuthStatusValid
+                              ? (context.read<DataStoreBloc>().state
+                                        as AuthStatusValid)
+                                    .isUrl
+                                    .toString()
+                              : '',*/
+                          "https://dummyjson.com",
+                        )
+                        ..add(IniciarTemporizador())
+                        ..add(FetchPosts()),
                 ),
               ],
               child: HomePage(),

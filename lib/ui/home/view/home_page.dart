@@ -47,124 +47,126 @@ class _HomePageState extends State<HomePage> {
             ),
             SafeArea(
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Gap(80),
-                    Text(
-                      'SISTEMA DE ENRUTAMIENTO',
-                      style: textTheme.labelLarge?.copyWith(
-                        fontSize: 30,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 20,
-                        decorationColor: theme.colorScheme.primary.withValues(
-                          alpha: 0.3,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Gap(80),
+                      Text(
+                        'SISTEMA DE ENRUTAMIENTO',
+                        style: textTheme.labelLarge?.copyWith(
+                          fontSize: 30,
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 20,
+                          decorationColor: theme.colorScheme.primary.withValues(
+                            alpha: 0.3,
+                          ),
                         ),
                       ),
-                    ),
-                    Gap(50),
+                      Gap(50),
 
-                    //ServicioInvalid(),
-                    /*
-                    SizedBox(
-                      height: 400,
-                      width: double.infinity,
-                      child:
-                          BlocBuilder<
-                            DatosenrutamientoBloc,
-                            DatosenrutamientoState
-                          >(
-                            //refreshOnChange: true,
-                            builder: (context, state) {
-                              //context.watch<DatosenrutamientoBloc>();
-                              if (state is DatosenrutamientoInitial) {
-                                return const Center(
-                                  child: Text('Please wait...'),
-                                );
-                              } else if (state is DatosenrutamientoLoading) {
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              } else if (state is DatosenrutamientoLoaded) {
-                                return Center(
-                                  child: Pruebas(post: state.posts),
-                                );
-                              } else if (state is DatosenrutamientoError) {
-                                return Center(
-                                  child: Text('Error: ${state.message}'),
-                                );
-                              } else {
-                                return Container();
-                              }
-                            },
-                          ),
-                    ),
-                    */
-                    //Pruebas(post: context.watch<DatosenrutamientoBloc>().state.),
-                    SizedBox(
-                      height: 400,
-                      width: double.infinity,
-                      child:
-                          BlocConsumer<
-                            DatosenrutamientoBloc,
-                            DatosenrutamientoState
-                          >(
-                            builder: (context, state) {
-                              if (state is DatosenrutamientoLoading) {
-                                return Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              } else if (state is DatosenrutamientoLoaded) {
-                                return Pruebas(post: state.posts);
-                              } else if (state is DatosenrutamientoError) {
-                                return Center(
-                                  child: Text('Error: ${state.message}'),
-                                );
-                              }
-                              return Container();
-                            },
-                            listener: (context, state) {
-                              if (state is DatosenrutamientoError) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Error: ${state.message}'),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
-                    ),
-                    Gap(50),
-                    user == 1
-                        ? FilledButton.tonalIcon(
-                            icon: Icon(Icons.energy_savings_leaf_rounded),
-                            style: ButtonStyle(
-                              //backgroundColor: WidgetStatePropertyAll(Colors.green),
-                              textStyle: WidgetStateProperty.resolveWith((
-                                value,
-                              ) {
-                                if (value.contains(WidgetState.pressed)) {
-                                  return TextStyle(
-                                    fontSize: 30,
-                                    decorationColor: Colors.amber,
-                                    fontWeight: FontWeight.w900,
+                      //ServicioInvalid(),
+                      /*
+                      SizedBox(
+                        height: 400,
+                        width: double.infinity,
+                        child:
+                            BlocBuilder<
+                              DatosenrutamientoBloc,
+                              DatosenrutamientoState
+                            >(
+                              //refreshOnChange: true,
+                              builder: (context, state) {
+                                //context.watch<DatosenrutamientoBloc>();
+                                if (state is DatosenrutamientoInitial) {
+                                  return const Center(
+                                    child: Text('Please wait...'),
+                                  );
+                                } else if (state is DatosenrutamientoLoading) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else if (state is DatosenrutamientoLoaded) {
+                                  return Center(
+                                    child: Pruebas(post: state.posts),
+                                  );
+                                } else if (state is DatosenrutamientoError) {
+                                  return Center(
+                                    child: Text('Error: ${state.message}'),
+                                  );
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
+                      ),
+                      */
+                      //Pruebas(post: context.watch<DatosenrutamientoBloc>().state.),
+                      SizedBox(
+                        height: 400,
+                        width: double.infinity,
+                        child:
+                            BlocConsumer<
+                              DatosenrutamientoBloc,
+                              DatosenrutamientoState
+                            >(
+                              builder: (context, state) {
+                                if (state is DatosenrutamientoLoading) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else if (state is DatosenrutamientoLoaded) {
+                                  return Pruebas(post: state.posts);
+                                } else if (state is DatosenrutamientoError) {
+                                  return Center(
+                                    child: Text('Error: ${state.message}'),
                                   );
                                 }
-                                return TextStyle(
-                                  fontSize: 20,
-                                  fontStyle: FontStyle.italic,
-                                  color: Colors.amber,
-                                  fontWeight: FontWeight.w900,
-                                );
-                              }),
+                                return Container();
+                              },
+                              listener: (context, state) {
+                                if (state is DatosenrutamientoError) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Error: ${state.message}'),
+                                    ),
+                                  );
+                                }
+                              },
                             ),
-                            onPressed: () {},
-                            label: Text("Proceder A Enrutarr"),
-                            // child: Text("Proceder A Enrutar"),
-                          )
-                        : Container(),
-                    //HoraWidget(sizeFont: 40, 0),
-                  ],
+                      ),
+                      Gap(50),
+                      user == 1
+                          ? FilledButton.tonalIcon(
+                              icon: Icon(Icons.energy_savings_leaf_rounded),
+                              style: ButtonStyle(
+                                //backgroundColor: WidgetStatePropertyAll(Colors.green),
+                                textStyle: WidgetStateProperty.resolveWith((
+                                  value,
+                                ) {
+                                  if (value.contains(WidgetState.pressed)) {
+                                    return TextStyle(
+                                      fontSize: 30,
+                                      decorationColor: Colors.amber,
+                                      fontWeight: FontWeight.w900,
+                                    );
+                                  }
+                                  return TextStyle(
+                                    fontSize: 20,
+                                    fontStyle: FontStyle.italic,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.w900,
+                                  );
+                                }),
+                              ),
+                              onPressed: () {},
+                              label: Text("Proceder A Enrutarr"),
+                              // child: Text("Proceder A Enrutar"),
+                            )
+                          : Container(),
+                      //HoraWidget(sizeFont: 40, 0),
+                    ],
+                  ),
                 ),
               ),
             ),
