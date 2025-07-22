@@ -17,6 +17,12 @@ void main() {
   runApp(const MyApp());
 }
 
+//https://docs.flutter.dev/
+//https://docs.flutter.dev/codelabs
+//https://docs.flutter.dev/codelabs
+//https://github.com/flutter/samples/tree/main/android_splash_screen
+//https://flutter.dev/docs/development/ui/advanced/splash-screen
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
