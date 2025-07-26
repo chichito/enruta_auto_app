@@ -1,6 +1,7 @@
 import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
 import 'package:enruta_auto_app/ui/home/widgets/pruebas.dart';
+import 'package:enruta_auto_app/ui/home/widgets/todo_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -111,11 +112,12 @@ class _HomePageState extends State<HomePage> {
                               DatosenrutamientoState
                             >(
                               builder: (context, state) {
-                                if (state is DatosenrutamientoLoading) {
+                                /*if (state is DatosenrutamientoLoading) {
                                   return Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                } else if (state is DatosenrutamientoLoaded) {
+                                } else*/
+                                if (state is DatosenrutamientoLoaded) {
                                   return Pruebas(post: state.posts);
                                 } else if (state is DatosenrutamientoError) {
                                   return Center(
@@ -126,11 +128,11 @@ class _HomePageState extends State<HomePage> {
                               },
                               listener: (context, state) {
                                 if (state is DatosenrutamientoError) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
+                                  /*ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text('Error: ${state.message}'),
                                     ),
-                                  );
+                                  );*/
                                 }
                               },
                             ),
@@ -159,7 +161,15 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 }),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (context) {
+                                    return TodoFormWidget();
+                                  },
+                                );
+                              },
                               label: Text("Proceder A Enrutarr"),
                               // child: Text("Proceder A Enrutar"),
                             )

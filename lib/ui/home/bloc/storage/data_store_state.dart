@@ -7,9 +7,11 @@ class AuthInitial extends DataStoreState {}
 class AuthStatusValid extends DataStoreState {
   final String valorIp;
   final String valorPort;
-  String get isUrl => 'http://$valorIp:$valorPort';
+  final String? valorProtocol;
 
-  AuthStatusValid(this.valorIp, this.valorPort);
+  String get isUrl => '$valorProtocol$valorIp:$valorPort';
+
+  AuthStatusValid(this.valorProtocol, this.valorIp, this.valorPort);
 }
 
 class AuthStatusInValid extends DataStoreState {}

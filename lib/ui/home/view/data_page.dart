@@ -20,6 +20,7 @@ class _DataPageState extends State<DataPage> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final cubit = context.read<DataCubit>();
+    String selectedOption = "http://";
 
     return Scaffold(
       appBar: AppBar(title: Text('Ingreso Datos')),
@@ -78,6 +79,27 @@ class _DataPageState extends State<DataPage> {
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                           ),
+                          const SizedBox(height: 30),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DropdownButtonFormField<String>(
+                                value: selectedOption,
+                                items: ['http://', 'https://'].map((
+                                  String option,
+                                ) {
+                                  return DropdownMenuItem<String>(
+                                    value: option,
+                                    child: Text(option),
+                                  );
+                                }).toList(),
+                                onChanged: cubit.onProtocolChanged,
+                                decoration: const InputDecoration(
+                                  label: Text('Selecciona el Protocolo'),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -110,6 +132,7 @@ class _DataPageState extends State<DataPage> {
                 GrabarIn(
                   valorip: cubit.state.sIp!,
                   valorport: cubit.state.sPort!,
+                  valorprotocol: cubit.state.sProtocol!,
                 ),
               );
               ScaffoldMessenger.of(context).showSnackBar(

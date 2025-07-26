@@ -7,8 +7,13 @@ class AppStarted extends DataStoreEvent {}
 class GrabarIn extends DataStoreEvent {
   final String valorip;
   final String valorport;
+  final String valorprotocol;
 
-  GrabarIn({required this.valorip, required this.valorport});
+  GrabarIn({
+    required this.valorip,
+    required this.valorport,
+    required this.valorprotocol,
+  });
 }
 
 class DeleteOut extends DataStoreEvent {

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:enruta_auto_app/ui/data/services/flutter_secure_storage.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'data_store_event.dart';
@@ -20,20 +19,23 @@ class DataStoreBloc extends Bloc<DataStoreEvent, DataStoreState> {
     AppStarted event,
     Emitter<DataStoreState> emit,
   ) async {
+    final valorProtocol = await _storageService.getToken('PROTOCOL');
     final valorIp = await _storageService.getToken('IP');
     final valorPort = await _storageService.getToken('PORT');
 
     if (valorIp != null) {
-      emit(AuthStatusValid(valorIp, valorPort!));
+      emit(AuthStatusValid(valorProtocol, valorIp, valorPort!));
     } else {
       emit(AuthStatusInValid());
     }
   }
 
   Future<void> _onGrabarIn(GrabarIn event, Emitter<DataStoreState> emit) async {
+    await _storageService.saveToken('PROTOCOL', event.valorprotocol);
     await _storageService.saveToken('IP', event.valorip);
     await _storageService.saveToken('PORT', event.valorport);
-    emit(AuthStatusValid(event.valorip, event.valorport));
+
+    emit(AuthStatusValid(event.valorprotocol, event.valorip, event.valorport));
   }
 
   Future<void> _onDeleteOut(
