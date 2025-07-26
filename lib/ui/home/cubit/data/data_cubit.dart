@@ -37,4 +37,14 @@ class DataCubit extends Cubit<DataState> {
     else
       return 'Ingrese Solo Numeros';
   }
+
+  String? onValidatePing(String? sPing) {
+    if (sPing == null || sPing.isEmpty) {
+      return 'Por favor ingresa el Ping';
+    }
+    if (sPing.isNumeric)
+      return null;
+    else
+      return 'Ingrese Solo Numeros';
+  }
 }

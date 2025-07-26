@@ -50,13 +50,7 @@ class MyApp extends StatelessWidget {
             AppNavigator.home: (_) => MultiBlocProvider(
               providers: [
                 BlocProvider<HoraCubit>(create: (context) => HoraCubit()),
-                /*
-                BlocProvider<DatosenrutamientoBloc>(
-                  create: (context) =>
-                      DatosenrutamientoBloc(PostRepository())
-                        ..add(FetchPosts()),
-                ),
-                */
+                BlocProvider<DataCubit>(create: (context) => DataCubit()),
                 BlocProvider<DatosenrutamientoBloc>(
                   create: (context) =>
                       DatosenrutamientoBloc(
@@ -71,6 +65,14 @@ class MyApp extends StatelessWidget {
                         ..add(IniciarTemporizador())
                         ..add(FetchPosts()),
                 ),
+
+                /*
+                BlocProvider<DatosenrutamientoBloc>(
+                  create: (context) =>
+                      DatosenrutamientoBloc(PostRepository())
+                        ..add(FetchPosts()),
+                ),
+                */
               ],
               child: HomePage(),
             ),

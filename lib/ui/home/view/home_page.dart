@@ -1,7 +1,8 @@
 import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
+import 'package:enruta_auto_app/ui/home/cubit/data/data_cubit.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
 import 'package:enruta_auto_app/ui/home/widgets/pruebas.dart';
-import 'package:enruta_auto_app/ui/home/widgets/todo_form_widget.dart';
+import 'package:enruta_auto_app/ui/home/widgets/validar_enrutar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -163,14 +164,17 @@ class _HomePageState extends State<HomePage> {
                               ),
                               onPressed: () {
                                 showDialog(
-                                  context: context,
                                   barrierDismissible: false,
-                                  builder: (context) {
-                                    return TodoFormWidget();
+                                  context: context,
+                                  builder: (BuildContext dialogContext) {
+                                    return BlocProvider.value(
+                                      value: context.read<DataCubit>(),
+                                      child: ValidarEnrutarWidget(),
+                                    );
                                   },
                                 );
                               },
-                              label: Text("Proceder A Enrutarr"),
+                              label: Text("Proceder A Enrutar"),
                               // child: Text("Proceder A Enrutar"),
                             )
                           : Container(),
