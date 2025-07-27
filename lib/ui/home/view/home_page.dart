@@ -187,6 +187,8 @@ class _HomePageState extends State<HomePage> {
                               // child: Text("Proceder A Enrutar"),
                             )
                           : Container(),
+                      Gap(20),
+                      FilledButton(onPressed: () {}, child: Text("Refrescar")),
                       //HoraWidget(sizeFont: 40, 0),
                     ],
                   ),
