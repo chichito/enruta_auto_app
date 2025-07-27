@@ -1,4 +1,4 @@
-import 'package:enruta_auto_app/ui/home/bloc/storage/data_store_bloc.dart';
+import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/cubit/data/data_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,7 +84,7 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                     filled: true,
                     fillColor: Colors.grey[200],
                   ),
-                  onChanged: (value) {},
+                  onChanged: cubit.onPingChanged,
                   validator: cubit.onValidatePing,
                 ),
                 const SizedBox(height: 20),
@@ -114,8 +114,8 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        context.read<DataStoreBloc>().add(
-                          DeleteOut(clave: 'IP'),
+                        context.read<DatosenrutamientoBloc>().add(
+                          GrabarDatos(ping: cubit.state.sPing ?? ''),
                         );
                         Navigator.of(context).pop();
                       }

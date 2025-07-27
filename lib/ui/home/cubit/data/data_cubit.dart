@@ -18,6 +18,10 @@ class DataCubit extends Cubit<DataState> {
     emit(state.copyWith(sProtocol: sProtocol));
   }
 
+  void onPingChanged(String? sPing) {
+    emit(state.copyWith(sPing: sPing));
+  }
+
   String? onValidateIP(String? sIp) {
     if (sIp == null || sIp.isEmpty) {
       return 'Por favor ingresa una IP';

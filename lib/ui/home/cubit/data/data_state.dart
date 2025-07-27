@@ -4,15 +4,35 @@ class DataState {
   final String? sIp;
   final String? sPort;
   final String? sProtocol;
+  final String? sPing;
+  final String? sAutorizado;
+  final String? sObservacion;
 
-  DataState({this.sIp, this.sPort, this.sProtocol});
+  DataState({
+    this.sIp,
+    this.sPort,
+    this.sProtocol,
+    this.sPing,
+    this.sAutorizado,
+    this.sObservacion,
+  });
 
   //metodo copyWith
-  DataState copyWith({String? sIp, String? sPort, String? sProtocol}) {
+  DataState copyWith({
+    String? sIp,
+    String? sPort,
+    String? sProtocol,
+    String? sPing,
+    String? sAutorizado,
+    String? sObservacion,
+  }) {
     return DataState(
       sIp: sIp ?? this.sIp,
       sPort: sPort ?? this.sPort,
       sProtocol: sProtocol ?? this.sProtocol,
+      sPing: sPing ?? this.sPing,
+      sAutorizado: sAutorizado ?? this.sAutorizado,
+      sObservacion: sObservacion ?? this.sObservacion,
     );
   }
 }

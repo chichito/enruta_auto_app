@@ -31,6 +31,7 @@ class DatosenrutamientoBloc
       });
     });
     on<FetchPosts>(_onFetchPosts);
+    on<GrabarDatos>(_onGrabarDatos);
   }
 
   Future<void> _onFetchPosts(
@@ -51,5 +52,15 @@ class DatosenrutamientoBloc
     // Cancel any ongoing timers or streams if necessary
     timer?.cancel();
     return super.close();
+  }
+
+  FutureOr<void> _onGrabarDatos(
+    GrabarDatos event,
+    Emitter<DatosenrutamientoState> emit,
+  ) {
+    // Handle the GrabarDatos event
+    final String ping = event.ping;
+    print(ping);
+    //emit(DatosenrutamientoInitial()); // Emit an initial state or any other relevant state
   }
 }

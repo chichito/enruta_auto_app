@@ -167,8 +167,16 @@ class _HomePageState extends State<HomePage> {
                                   barrierDismissible: false,
                                   context: context,
                                   builder: (BuildContext dialogContext) {
-                                    return BlocProvider.value(
-                                      value: context.read<DataCubit>(),
+                                    return MultiBlocProvider(
+                                      providers: [
+                                        BlocProvider.value(
+                                          value: context.read<DataCubit>(),
+                                        ),
+                                        BlocProvider.value(
+                                          value: context
+                                              .read<DatosenrutamientoBloc>(),
+                                        ),
+                                      ],
                                       child: ValidarNormalWidget(),
                                     );
                                   },
