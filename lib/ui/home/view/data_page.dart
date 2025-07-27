@@ -20,7 +20,8 @@ class _DataPageState extends State<DataPage> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final cubit = context.read<DataCubit>();
-    String selectedOption = "http://";
+    //String selectedOption = "http://";
+    cubit.onProtocolChanged("http://");
 
     return Scaffold(
       appBar: AppBar(title: Text('Ingreso Datos')),
@@ -84,7 +85,7 @@ class _DataPageState extends State<DataPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               DropdownButtonFormField<String>(
-                                value: selectedOption,
+                                value: cubit.state.sProtocol,
                                 items: ['http://', 'https://'].map((
                                   String option,
                                 ) {

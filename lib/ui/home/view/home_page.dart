@@ -2,7 +2,7 @@ import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento
 import 'package:enruta_auto_app/ui/home/cubit/data/data_cubit.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
 import 'package:enruta_auto_app/ui/home/widgets/pruebas.dart';
-import 'package:enruta_auto_app/ui/home/widgets/validar_enrutar_widget.dart';
+import 'package:enruta_auto_app/ui/home/widgets/validacion/validar_normal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                                   builder: (BuildContext dialogContext) {
                                     return BlocProvider.value(
                                       value: context.read<DataCubit>(),
-                                      child: ValidarEnrutarWidget(),
+                                      child: ValidarNormalWidget(),
                                     );
                                   },
                                 );

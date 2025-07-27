@@ -42,9 +42,13 @@ class DataCubit extends Cubit<DataState> {
     if (sPing == null || sPing.isEmpty) {
       return 'Por favor ingresa el Ping';
     }
-    if (sPing.isNumeric)
-      return null;
-    else
-      return 'Ingrese Solo Numeros';
+    if (sPing.length == 4) {
+      if (sPing.isNumeric)
+        return null;
+      else
+        return 'Ingrese Solo Numeros';
+    } else {
+      return 'El Ping debe tener 4 digitos';
+    }
   }
 }

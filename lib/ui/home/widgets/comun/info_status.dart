@@ -23,6 +23,7 @@ class InfoStatus extends StatelessWidget {
               // Handle tap if needed
               context.read<DataStoreBloc>().add(DeleteOut(clave: 'IP'));
               context.read<DataStoreBloc>().add(DeleteOut(clave: 'PORT'));
+              context.read<DataStoreBloc>().add(DeleteOut(clave: 'PROTOCOL'));
               context.read<DatosenrutamientoBloc>().close();
             },
             child: Card(
