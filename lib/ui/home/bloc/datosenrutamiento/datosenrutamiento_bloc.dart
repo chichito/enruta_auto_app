@@ -31,7 +31,8 @@ class DatosenrutamientoBloc
       });
     });
     on<FetchPosts>(_onFetchPosts);
-    on<GrabarDatos>(_onGrabarDatos);
+    on<GrabarDatosEnrutar>(_onGrabarDatosEnrutar);
+    on<GrabarDatosNormal>(_onGrabarDatosNormal);
   }
 
   Future<void> _onFetchPosts(
@@ -54,13 +55,28 @@ class DatosenrutamientoBloc
     return super.close();
   }
 
-  FutureOr<void> _onGrabarDatos(
-    GrabarDatos event,
+  FutureOr<void> _onGrabarDatosEnrutar(
+    GrabarDatosEnrutar event,
     Emitter<DatosenrutamientoState> emit,
   ) {
-    // Handle the GrabarDatos event
+    // Handle the GrabarDatosEnrutar event
     final String ping = event.ping;
     print(ping);
+    //emit(DatosenrutamientoInitial()); // Emit an initial state or any other relevant state
+  }
+
+  FutureOr<void> _onGrabarDatosNormal(
+    GrabarDatosNormal event,
+    Emitter<DatosenrutamientoState> emit,
+  ) {
+    // Handle the GrabarDatosNormal event
+    final String ping = event.ping;
+    final String sAutorizacion = event.sAutorizacion;
+    final String sObservaciones = event.sObservaciones;
+
+    print(ping);
+    print(sAutorizacion);
+    print(sObservaciones);
     //emit(DatosenrutamientoInitial()); // Emit an initial state or any other relevant state
   }
 }

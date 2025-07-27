@@ -22,6 +22,14 @@ class DataCubit extends Cubit<DataState> {
     emit(state.copyWith(sPing: sPing));
   }
 
+  void onAutorizadoChanged(String? sAutorizado) {
+    emit(state.copyWith(sAutorizado: sAutorizado));
+  }
+
+  void onObservacionChanged(String? sObservaciones) {
+    emit(state.copyWith(sObservaciones: sObservaciones));
+  }
+
   String? onValidateIP(String? sIp) {
     if (sIp == null || sIp.isEmpty) {
       return 'Por favor ingresa una IP';
@@ -53,6 +61,17 @@ class DataCubit extends Cubit<DataState> {
         return 'Ingrese Solo Numeros';
     } else {
       return 'El Ping debe tener 4 digitos';
+    }
+  }
+
+  String? onValidateString(String? sString) {
+    if (sString == null || sString.isEmpty) {
+      return 'Por favor ingresa un valor';
+    }
+    if (sString.isNotEmpty) {
+      return null;
+    } else {
+      return 'Ingrese un valor valido';
     }
   }
 }

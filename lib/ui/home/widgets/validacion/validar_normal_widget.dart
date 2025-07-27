@@ -84,8 +84,8 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                     filled: true,
                     fillColor: Colors.grey[200],
                   ),
-                  onChanged: cubit.onPingChanged,
-                  validator: cubit.onValidatePing,
+                  onChanged: cubit.onAutorizadoChanged,
+                  validator: cubit.onValidateString,
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -103,8 +103,8 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                     filled: true,
                     fillColor: Colors.grey[200],
                   ),
-                  onChanged: (value) {},
-                  validator: cubit.onValidatePing,
+                  onChanged: cubit.onObservacionChanged,
+                  validator: cubit.onValidateString,
                 ),
 
                 const SizedBox(height: 20),
@@ -115,7 +115,11 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         context.read<DatosenrutamientoBloc>().add(
-                          GrabarDatos(ping: cubit.state.sPing ?? ''),
+                          GrabarDatosNormal(
+                            ping: cubit.state.sPing ?? '',
+                            sAutorizacion: cubit.state.sAutorizado ?? '',
+                            sObservaciones: cubit.state.sObservaciones ?? '',
+                          ),
                         );
                         Navigator.of(context).pop();
                       }

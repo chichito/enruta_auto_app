@@ -6,7 +6,7 @@ class DataState {
   final String? sProtocol;
   final String? sPing;
   final String? sAutorizado;
-  final String? sObservacion;
+  final String? sObservaciones;
 
   DataState({
     this.sIp,
@@ -14,7 +14,7 @@ class DataState {
     this.sProtocol,
     this.sPing,
     this.sAutorizado,
-    this.sObservacion,
+    this.sObservaciones,
   });
 
   //metodo copyWith
@@ -24,7 +24,7 @@ class DataState {
     String? sProtocol,
     String? sPing,
     String? sAutorizado,
-    String? sObservacion,
+    String? sObservaciones,
   }) {
     return DataState(
       sIp: sIp ?? this.sIp,
@@ -32,7 +32,7 @@ class DataState {
       sProtocol: sProtocol ?? this.sProtocol,
       sPing: sPing ?? this.sPing,
       sAutorizado: sAutorizado ?? this.sAutorizado,
-      sObservacion: sObservacion ?? this.sObservacion,
+      sObservaciones: sObservaciones ?? this.sObservaciones,
     );
   }
 }
