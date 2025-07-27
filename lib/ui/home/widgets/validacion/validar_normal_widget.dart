@@ -12,6 +12,7 @@ class ValidarNormalWidget extends StatefulWidget {
 
 class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isValid = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,15 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
     return Dialog(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          //color: const Color.fromARGB(255, 7, 99, 4),
+          gradient: LinearGradient(
+            colors: [
+              Colors.white.withValues(alpha: 0.8),
+              Colors.green.withValues(alpha: 0.9),
+            ],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),
           borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
@@ -35,6 +44,9 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
+            onChanged: () => setState(() {
+              isValid = _formKey.currentState!.validate();
+            }),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -51,58 +63,51 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                 ),
                 const SizedBox(height: 16),
 
-                const Text(
-                  "Ingresae el Ping de Enrutamiento",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
                 TextFormField(
-                  keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    label: Text('El Ping de Enrutamiento'),
+                    labelStyle: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black54,
                     ),
-                    filled: true,
-                    fillColor: Colors.grey[200],
                   ),
-                  onChanged: (value) {},
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  onChanged: cubit.onPingChanged,
                   validator: cubit.onValidatePing,
                 ),
 
                 const SizedBox(height: 20),
-                const Text(
-                  "Autorizacion de Enrutamiento",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-
                 TextFormField(
                   textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                  decoration: const InputDecoration(
+                    label: Text('Autorizacion de Enrutamiento'),
+                    labelStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black54,
                     ),
-                    filled: true,
-                    fillColor: Colors.grey[200],
                   ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   onChanged: cubit.onAutorizadoChanged,
                   validator: cubit.onValidateString,
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  "Observaciones del Enrutamiento",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
                 TextFormField(
                   keyboardType: TextInputType.multiline,
                   maxLines: 3,
                   textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                  decoration: const InputDecoration(
+                    label: Text('Observacion del Enrutamiento'),
+                    labelStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black54,
                     ),
-                    filled: true,
-                    fillColor: Colors.grey[200],
                   ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   onChanged: cubit.onObservacionChanged,
                   validator: cubit.onValidateString,
                 ),
@@ -111,32 +116,43 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
 
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        context.read<DatosenrutamientoBloc>().add(
-                          GrabarDatosNormal(
-                            ping: cubit.state.sPing ?? '',
-                            sAutorizacion: cubit.state.sAutorizado ?? '',
-                            sObservaciones: cubit.state.sObservaciones ?? '',
+                  child: Visibility(
+                    visible: isValid,
+                    child: ElevatedButton(
+                      onPressed: isValid
+                          ? () {
+                              if (_formKey.currentState!.validate()) {
+                                context.read<DatosenrutamientoBloc>().add(
+                                  GrabarDatosNormal(
+                                    ping: cubit.state.sPing ?? '',
+                                    sAutorizacion:
+                                        cubit.state.sAutorizado ?? '',
+                                    sObservaciones:
+                                        cubit.state.sObservaciones ?? '',
+                                  ),
+                                );
+                                Navigator.of(context).pop();
+                              }
+                            }
+                          : null,
+                      style: ButtonStyle(
+                        backgroundColor: const WidgetStatePropertyAll(
+                          Color.fromARGB(255, 101, 120, 228),
+                        ),
+                        shape: WidgetStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                        );
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: const WidgetStatePropertyAll(
-                        Colors.green,
-                      ),
-                      shape: WidgetStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                    ),
-                    child: const Text(
-                      'Save',
-                      style: TextStyle(color: Colors.black),
+                      child: const Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ),
                 ),

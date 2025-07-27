@@ -178,6 +178,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ],
                                       child: ValidarNormalWidget(),
+                                      //child: ValidarEnrutarWidget(),
                                     );
                                   },
                                 );

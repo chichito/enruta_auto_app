@@ -52,7 +52,7 @@ class DataCubit extends Cubit<DataState> {
 
   String? onValidatePing(String? sPing) {
     if (sPing == null || sPing.isEmpty) {
-      return 'Por favor ingresa el Ping';
+      return 'Ingresa el Ping';
     }
     if (sPing.length == 4) {
       if (sPing.isNumeric)
@@ -60,7 +60,7 @@ class DataCubit extends Cubit<DataState> {
       else
         return 'Ingrese Solo Numeros';
     } else {
-      return 'El Ping debe tener 4 digitos';
+      return 'Ping de 4 digitos';
     }
   }
 
