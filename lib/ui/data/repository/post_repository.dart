@@ -9,8 +9,8 @@ class PostRepository {
     _dio = Dio(
       BaseOptions(
         baseUrl: apiUrl,
-        connectTimeout: const Duration(milliseconds: 5000),
-        receiveTimeout: const Duration(milliseconds: 3000),
+        connectTimeout: const Duration(seconds: 90),
+        receiveTimeout: const Duration(seconds: 90),
       ),
     );
   }

@@ -30,23 +30,10 @@ class DatosEnrutamientoBloc
         add(GetEstado());
       });
     });
-    on<FetchPosts>(_onFetchPosts);
+    // on<FetchPosts>(_onFetchPosts);
     on<GetEstado>(_onGetEstado);
     on<GrabarDatosEnrutar>(_onGrabarDatosEnrutar);
     on<GrabarDatosNormal>(_onGrabarDatosNormal);
-  }
-
-  Future<void> _onFetchPosts(
-    FetchPosts event,
-    Emitter<DatosEnrutamientoState> emit,
-  ) async {
-    try {
-      emit(DatosEnrutamientoLoading());
-      List<Post> data = await _repository.fetchPosts();
-      emit(DatosfetchPostsLoaded(posts: data));
-    } catch (e) {
-      emit(DatosEnrutamientoError(message: e.toString()));
-    }
   }
 
   @override
@@ -93,4 +80,19 @@ class DatosEnrutamientoBloc
     print(sObservaciones);
     //emit(DatosenrutamientoInitial()); // Emit an initial state or any other relevant state
   }
+
+  /*
+  Future<void> _onFetchPosts(
+    FetchPosts event,
+    Emitter<DatosEnrutamientoState> emit,
+  ) async {
+    try {
+      emit(DatosEnrutamientoLoading());
+      List<Post> data = await _repository.fetchPosts();
+      emit(DatosfetchPostsLoaded(posts: data));
+    } catch (e) {
+      emit(DatosEnrutamientoError(message: e.toString()));
+    }
+  }
+*/
 }
