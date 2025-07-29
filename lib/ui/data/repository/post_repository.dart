@@ -46,4 +46,18 @@ class PostRepository {
       throw Exception('Error: Unexpected error occurred.');
     }
   }
+
+  Future<String> getEstado() async {
+    final response = await _dio.get('/Enrutamiento');
+    if (response.statusCode == 200) {
+      String jsonResponse = response.data;
+      return jsonResponse;
+    } else if (response.statusCode == 404) {
+      throw Exception('Error: User not found.');
+    } else if (response.statusCode == 500) {
+      throw Exception('Error: Internal server error.');
+    } else {
+      throw Exception('Error: Unexpected error occurred.');
+    }
+  }
 }

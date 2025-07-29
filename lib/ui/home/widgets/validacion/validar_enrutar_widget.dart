@@ -94,7 +94,7 @@ class _ValidarEnrutarWidgetState extends State<ValidarEnrutarWidget> {
                     onPressed: isValid
                         ? () {
                             if (_formKey.currentState!.validate()) {
-                              context.read<DatosenrutamientoBloc>().add(
+                              context.read<DatosEnrutamientoBloc>().add(
                                 GrabarDatosEnrutar(ping: cubit.state.sPing!),
                               );
                               Navigator.of(context).pop();

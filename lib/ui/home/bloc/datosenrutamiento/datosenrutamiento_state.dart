@@ -1,18 +1,24 @@
 part of 'datosenrutamiento_bloc.dart';
 
-abstract class DatosenrutamientoState {}
+abstract class DatosEnrutamientoState {}
 
-class DatosenrutamientoInitial extends DatosenrutamientoState {}
+class DatosEnrutamientoInitial extends DatosEnrutamientoState {}
 
-class DatosenrutamientoLoading extends DatosenrutamientoState {}
+class DatosEnrutamientoLoading extends DatosEnrutamientoState {}
 
-class DatosenrutamientoLoaded extends DatosenrutamientoState {
+class DatosfetchPostsLoaded extends DatosEnrutamientoState {
   final List<Post> posts;
 
-  DatosenrutamientoLoaded({required this.posts});
+  DatosfetchPostsLoaded({required this.posts});
 }
 
-class DatosenrutamientoError extends DatosenrutamientoState {
+class DatosEnrutamientoLoaded extends DatosEnrutamientoState {
+  final String data;
+
+  DatosEnrutamientoLoaded({required this.data});
+}
+
+class DatosEnrutamientoError extends DatosEnrutamientoState {
   final String message;
-  DatosenrutamientoError({required this.message});
+  DatosEnrutamientoError({required this.message});
 }

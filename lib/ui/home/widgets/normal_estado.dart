@@ -11,7 +11,7 @@ class NormalEstado extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 400,
+            height: 360,
             // Width of the container
             width: double.infinity,
             //color: Colors.green,
@@ -67,31 +67,6 @@ class NormalEstado extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Gap(30),
-          FilledButton.tonalIcon(
-            icon: Icon(Icons.energy_savings_leaf_rounded),
-            style: ButtonStyle(
-              //backgroundColor: WidgetStatePropertyAll(Colors.green),
-              textStyle: WidgetStateProperty.resolveWith((value) {
-                if (value.contains(WidgetState.pressed)) {
-                  return TextStyle(
-                    fontSize: 30,
-                    decorationColor: Colors.amber,
-                    fontWeight: FontWeight.w900,
-                  );
-                }
-                return TextStyle(
-                  fontSize: 20,
-                  fontStyle: FontStyle.italic,
-                  color: Colors.amber,
-                  fontWeight: FontWeight.w900,
-                );
-              }),
-            ),
-            onPressed: () {},
-            label: Text("Proceder A Enrutarr"),
-            // child: Text("Proceder A Enrutar"),
           ),
         ],
       ),

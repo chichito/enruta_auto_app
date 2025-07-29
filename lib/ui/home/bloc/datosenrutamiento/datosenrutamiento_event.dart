@@ -1,16 +1,18 @@
 part of 'datosenrutamiento_bloc.dart';
 
-abstract class DatosenrutamientoEvent {}
+abstract class DatosEnrutamientoEvent {}
 
-class FetchPosts extends DatosenrutamientoEvent {}
+class FetchPosts extends DatosEnrutamientoEvent {}
 
-class GrabarDatosEnrutar extends DatosenrutamientoEvent {
+class GetEstado extends DatosEnrutamientoEvent {}
+
+class GrabarDatosEnrutar extends DatosEnrutamientoEvent {
   final String ping;
 
   GrabarDatosEnrutar({required this.ping});
 }
 
-class GrabarDatosNormal extends DatosenrutamientoEvent {
+class GrabarDatosNormal extends DatosEnrutamientoEvent {
   final String ping;
   final String sAutorizacion;
   final String sObservaciones;
@@ -22,4 +24,4 @@ class GrabarDatosNormal extends DatosenrutamientoEvent {
   });
 }
 
-class IniciarTemporizador extends DatosenrutamientoEvent {}
+class IniciarTemporizador extends DatosEnrutamientoEvent {}

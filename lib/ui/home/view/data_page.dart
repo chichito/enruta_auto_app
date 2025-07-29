@@ -36,77 +36,79 @@ class _DataPageState extends State<DataPage> {
           ),
           SafeArea(
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(height: 12),
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          Text(
-                            'Ingreso de IP y Puerto',
-                            style: textTheme.labelLarge?.copyWith(
-                              fontSize: 30,
-                              decoration: TextDecoration.underline,
-                              decorationThickness: 20,
-                              decorationColor: theme.colorScheme.primary
-                                  .withValues(alpha: 0.3),
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          TextFormField(
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              label: Text('Ingrese la Ip del Servidor'),
-                            ),
-                            onChanged: cubit.onIPChanged,
-                            validator: cubit.onValidateIP,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                          ),
-                          const SizedBox(height: 30),
-                          TextFormField(
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              label: Text('Ingrese la Puerto del Servidor'),
-                            ),
-                            onChanged: cubit.onPortChanged,
-                            validator: cubit.onValidatePort,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                          ),
-                          const SizedBox(height: 30),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              DropdownButtonFormField<String>(
-                                value: cubit.state.sProtocol,
-                                items: ['http://', 'https://'].map((
-                                  String option,
-                                ) {
-                                  return DropdownMenuItem<String>(
-                                    value: option,
-                                    child: Text(option),
-                                  );
-                                }).toList(),
-                                onChanged: cubit.onProtocolChanged,
-                                decoration: const InputDecoration(
-                                  label: Text('Selecciona el Protocolo'),
-                                ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(height: 12),
+                    Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            Text(
+                              'Ingreso de IP y Puerto',
+                              style: textTheme.labelLarge?.copyWith(
+                                fontSize: 30,
+                                decoration: TextDecoration.underline,
+                                decorationThickness: 20,
+                                decorationColor: theme.colorScheme.primary
+                                    .withValues(alpha: 0.3),
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                            const SizedBox(height: 30),
+                            TextFormField(
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                label: Text('Ingrese la Ip del Servidor'),
+                              ),
+                              onChanged: cubit.onIPChanged,
+                              validator: cubit.onValidateIP,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                            ),
+                            const SizedBox(height: 30),
+                            TextFormField(
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                label: Text('Ingrese la Puerto del Servidor'),
+                              ),
+                              onChanged: cubit.onPortChanged,
+                              validator: cubit.onValidatePort,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                            ),
+                            const SizedBox(height: 30),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                DropdownButtonFormField<String>(
+                                  value: cubit.state.sProtocol,
+                                  items: ['http://', 'https://'].map((
+                                    String option,
+                                  ) {
+                                    return DropdownMenuItem<String>(
+                                      value: option,
+                                      child: Text(option),
+                                    );
+                                  }).toList(),
+                                  onChanged: cubit.onProtocolChanged,
+                                  decoration: const InputDecoration(
+                                    label: Text('Selecciona el Protocolo'),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  HoraWidget(sizeFont: 20, 0),
-                ],
+                    HoraWidget(sizeFont: 20, 0),
+                  ],
+                ),
               ),
             ),
           ),

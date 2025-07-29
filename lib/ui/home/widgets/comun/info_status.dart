@@ -24,7 +24,7 @@ class InfoStatus extends StatelessWidget {
               context.read<DataStoreBloc>().add(DeleteOut(clave: 'IP'));
               context.read<DataStoreBloc>().add(DeleteOut(clave: 'PORT'));
               context.read<DataStoreBloc>().add(DeleteOut(clave: 'PROTOCOL'));
-              context.read<DatosenrutamientoBloc>().close();
+              context.read<DatosEnrutamientoBloc>().close();
             },
             child: Card(
               elevation: 4,

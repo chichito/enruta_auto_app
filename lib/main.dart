@@ -51,19 +51,19 @@ class MyApp extends StatelessWidget {
               providers: [
                 BlocProvider<HoraCubit>(create: (context) => HoraCubit()),
                 BlocProvider<DataCubit>(create: (context) => DataCubit()),
-                BlocProvider<DatosenrutamientoBloc>(
+                BlocProvider<DatosEnrutamientoBloc>(
                   create: (context) =>
-                      DatosenrutamientoBloc(
-                          /*context.read<DataStoreBloc>().state is AuthStatusValid
+                      DatosEnrutamientoBloc(
+                          context.read<DataStoreBloc>().state is AuthStatusValid
                               ? (context.read<DataStoreBloc>().state
                                         as AuthStatusValid)
                                     .isUrl
                                     .toString()
-                              : '',*/
-                          "https://dummyjson.com",
+                              : '',
+                          //"https://dummyjson.com",
                         )
-                        ..add(IniciarTemporizador())
-                        ..add(FetchPosts()),
+                        //..add(IniciarTemporizador())
+                        ..add(GetEstado()),
                 ),
 
                 /*

@@ -122,7 +122,7 @@ class _ValidarNormalWidgetState extends State<ValidarNormalWidget> {
                       onPressed: isValid
                           ? () {
                               if (_formKey.currentState!.validate()) {
-                                context.read<DatosenrutamientoBloc>().add(
+                                context.read<DatosEnrutamientoBloc>().add(
                                   GrabarDatosNormal(
                                     ping: cubit.state.sPing ?? '',
                                     sAutorizacion:

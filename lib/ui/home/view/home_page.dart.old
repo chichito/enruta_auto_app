@@ -1,8 +1,8 @@
 import 'package:enruta_auto_app/ui/home/bloc/datosenrutamiento/datosenrutamiento_bloc.dart';
 import 'package:enruta_auto_app/ui/home/cubit/data/data_cubit.dart';
 import 'package:enruta_auto_app/ui/home/widgets/comun/info_status.dart';
-import 'package:enruta_auto_app/ui/home/widgets/enrutado_estado.dart';
 import 'package:enruta_auto_app/ui/home/widgets/normal_estado.dart';
+import 'package:enruta_auto_app/ui/home/widgets/pruebas.dart';
 import 'package:enruta_auto_app/ui/home/widgets/validacion/validar_normal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +16,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    /* Timer.periodic(Duration(seconds: 5), (timer) {
+      context.read<DatosenrutamientoBloc>().add(FetchPosts());
+      //context.read<DatosenrutamientoBloc>().add(IniciarTemporizador());
+    });*/
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -58,6 +67,44 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Gap(50),
+
+                      //ServicioInvalid(),
+                      /*
+                      SizedBox(
+                        height: 400,
+                        width: double.infinity,
+                        child:
+                            BlocBuilder<
+                              DatosenrutamientoBloc,
+                              DatosenrutamientoState
+                            >(
+                              //refreshOnChange: true,
+                              builder: (context, state) {
+                                //context.watch<DatosenrutamientoBloc>();
+                                if (state is DatosenrutamientoInitial) {
+                                  return const Center(
+                                    child: Text('Please wait...'),
+                                  );
+                                } else if (state is DatosenrutamientoLoading) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else if (state is DatosenrutamientoLoaded) {
+                                  return Center(
+                                    child: Pruebas(post: state.posts),
+                                  );
+                                } else if (state is DatosenrutamientoError) {
+                                  return Center(
+                                    child: Text('Error: ${state.message}'),
+                                  );
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
+                      ),
+                      */
+                      //Pruebas(post: context.watch<DatosenrutamientoBloc>().state.),
                       SizedBox(
                         height: 400,
                         width: double.infinity,
@@ -73,17 +120,7 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else*/
                                 if (state is DatosEnrutamientoLoaded) {
-                                  if (state.data == '1')
-                                    return NormalEstado();
-                                  else if (state.data == '2')
-                                    return EnrutadoEstado();
-                                  else
-                                    return Container(
-                                      child: Text(
-                                        state.data,
-                                        style: textTheme.headlineMedium,
-                                      ),
-                                    );
+                                  if (state.data == '1') return NormalEstado();
                                 } else if (state is DatosEnrutamientoError) {
                                   return Center(
                                     child: Text('Error: ${state.message}'),
@@ -151,15 +188,8 @@ class _HomePageState extends State<HomePage> {
                               // child: Text("Proceder A Enrutar"),
                             )
                           : Container(),
-                      Gap(10),
-                      FilledButton(
-                        onPressed: () {
-                          context.read<DatosEnrutamientoBloc>().add(
-                            GetEstado(),
-                          );
-                        },
-                        child: Text("Refrescar"),
-                      ),
+                      Gap(20),
+                      FilledButton(onPressed: () {}, child: Text("Refrescar")),
                       //HoraWidget(sizeFont: 40, 0),
                     ],
                   ),
