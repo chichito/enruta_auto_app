@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 class NormalEstado extends StatelessWidget {
   const NormalEstado({super.key});
