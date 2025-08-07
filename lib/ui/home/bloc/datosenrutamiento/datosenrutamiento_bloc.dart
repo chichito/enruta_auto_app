@@ -48,9 +48,21 @@ class DatosEnrutamientoBloc
     Emitter<DatosEnrutamientoState> emit,
   ) async {
     try {
-      emit(DatosEnrutamientoLoading());
+      timer?.cancel(); // Cancel the timer if it's running);
+      if (state is DatosEnrutamientoInitial) {
+        emit(DatosEnrutamientoLoading(valorAnteriorState: 'initial'));
+      } else {
+        emit(
+          DatosEnrutamientoLoading(
+            valorAnteriorState: (state as DatosEnrutamientoLoaded).data,
+          ),
+        );
+      }
       String data = await _repository.getEstado();
       emit(DatosEnrutamientoLoaded(data: data));
+      timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+        add(GetEstado());
+      });
     } catch (e) {
       emit(DatosEnrutamientoError(message: e.toString()));
     }
