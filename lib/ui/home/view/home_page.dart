@@ -24,9 +24,9 @@ class _HomePageState extends State<HomePage> {
     final textTheme = theme.textTheme;
     final authState = context.watch<DatosEnrutamientoBloc>().state;
     final user = authState is DatosEnrutamientoLoaded
-        ? (authState as DatosEnrutamientoLoaded).data == "1"
+        ? (authState).data == "1"
               ? 1
-              : (authState as DatosEnrutamientoLoaded).data == "2"
+              : (authState).data == "2"
               ? 2
               : authState is DatosEnrutamientoError
               ? 3
